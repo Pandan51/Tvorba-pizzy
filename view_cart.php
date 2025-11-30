@@ -10,7 +10,7 @@ session_start();
         <p>Your cart is empty.</p>
     <?php else: ?>
         <table border="1">
-            <tr><th>Item</th><th>Toppings</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th>Action</th></tr>
+            <tr><th>Base</th><th>Toppings</th><th>Price</th><th>Quantity</th><th>Subtotal</th><th>Action</th></tr>
             <?php $total = 0; ?>
             <?php foreach ($_SESSION['cart'] as $id => $item): ?>
                 <tr>
@@ -20,7 +20,7 @@ session_start();
                         foreach ($item["toppings"] as $topping => $value) {
                             if($value != 0)
                             {
-                            ?> <p><?php echo $topping;?> - <?php echo ($value);?></p> <?php
+                            ?> <p><?php echo htmlspecialchars($topping);?> - <?php echo ($value);?></p> <?php
                             }
                         }
                     ?>

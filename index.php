@@ -26,10 +26,10 @@ if (!isset($_SESSION['cart'])) {
         <label for="inputAction">Make your own pizza!</label>
         <input type="hidden" id="InputAction" name="action" value="add">
     </div>
-    <div class="row">
-        <label for="InputId">Id</label>
-        <input type="number" id="InputId" name="item_id" value="101">
-    </div>
+<!--    <div class="row">-->
+<!--        <label for="InputId">Id</label>-->
+<!--        <input type="number" id="InputId" name="item_id" value="101">-->
+<!--    </div>-->
     <div class="row">
         <label for="pizzaBase">Base</label>
         <select name="base" id="pizzaBase">

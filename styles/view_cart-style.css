@@ -1,6 +1,15 @@
-.flex
+body
 {
     display: flex;
+    justify-content: center;
+    background: #FFF69F;
+}
+.page-container
+{
+    background: #FFFBD2;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #000000;
 }
 .shopping-cart
 {
@@ -9,10 +18,20 @@
 .table, th, td
 {
     border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    background: white;
+    padding: 5px;
 }
 .quantity-cell
 {
     display: flex;
+}
+.cell-center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .flex-space-between{
     display: flex;
@@ -43,4 +62,47 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+}
+
+.button-round
+{
+    border: 0.5px solid black;
+    border-radius: 50%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background: ghostwhite;
+}
+.button-decrement:hover{
+    background: #DA2537;
+    color:white;
+    border-radius: 15px;
+
+}
+.button-increment:hover
+{
+    border-radius: 15px;
+    background: #37DA25;
+}
+.forms-grid
+{
+    display: grid !important;
+    gap:10px;
+}
+.a-BtS
+{
+    text-decoration: none;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 8px;
+}
+.a-BtS:hover{
+    color: white;
+    background: #37DA25;
+}
+
+.a-BtS:visited{
+    color: black;
+}
+.a-BtS:visited:hover{
+    color: white;
 }

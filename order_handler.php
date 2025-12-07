@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['cart'])|| empty($_SESSION['cart'])) {
+if (empty($_SESSION['cart'])) {
     header('Location: view_cart.php');
     die();
 }

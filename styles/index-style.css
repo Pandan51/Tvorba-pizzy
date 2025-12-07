@@ -1,0 +1,30 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    background: #FFF69F;
+}
+.page-container
+{
+    display: flex;
+    justify-content: space-between;
+    background: #FFFBD2;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #000000;
+}
+.pizza-img
+{
+    max-width: 460px;
+}
+.button-increment:hover
+{
+    background: #37DA25;
+    border-radius: 15px;
+}
+
+.forms-grid
+{
+    display: grid !important;
+    gap:10px;
+}

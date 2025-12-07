@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 if (empty($_SESSION['cart'])) {
     header('Location: view_cart.php');
     die();
@@ -8,15 +10,15 @@ if (empty($_SESSION['cart'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'order')
 {
 
-    $email = htmlspecialchars($_POST['email'] ?? '');
-    $name = htmlspecialchars($_POST['name'] ?? '');
-    $surname = htmlspecialchars($_POST['surname'] ?? '');
-    $streetName = htmlspecialchars($_POST['streetName'] ?? '');
-    $streetNum = htmlspecialchars($_POST['streetNum'] ?? '');
-    $city = htmlspecialchars($_POST['city'] ?? '');
-    $postcode = htmlspecialchars($_POST['postcode'] ?? '');
-    $phoneNum = htmlspecialchars($_POST['phoneNum'] ?? '');
-    $soulAgreement = $_POST['soulAgreement'] ?? '';
+    $email = trim(htmlspecialchars($_POST['email'] ?? ''));
+    $name = trim(htmlspecialchars($_POST['name'] ?? ''));
+    $surname = trim(htmlspecialchars($_POST['surname'] ?? ''));
+    $streetName = trim(htmlspecialchars($_POST['streetName'] ?? ''));
+    $streetNum = trim(htmlspecialchars($_POST['streetNum'] ?? ''));
+    $city = trim(htmlspecialchars($_POST['city'] ?? ''));
+    $postcode = trim(htmlspecialchars($_POST['postcode'] ?? ''));
+    $phoneNum = trim(htmlspecialchars($_POST['phoneNum'] ?? ''));
+    $soulAgreement = htmlspecialchars($_POST['soulAgreement'] ?? '');
     $correct = true;
 
     $required_fields = [
@@ -95,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'order')
         header('Location: view_cart.php');
     }
     die();
+
 
 
 //    $email = htmlspecialchars($_POST['email']);

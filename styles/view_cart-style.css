@@ -1,0 +1,46 @@
+.flex
+{
+    display: flex;
+}
+.shopping-cart
+{
+    width: 470px;
+}
+.table, th, td
+{
+    border: 1px solid black;
+}
+.quantity-cell
+{
+    display: flex;
+}
+.flex-space-between{
+    display: flex;
+    justify-content: space-between;
+}
+.flex-align-items-center{
+    display: flex;
+    align-items: center;
+}
+
+.h2-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.container-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-column{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}

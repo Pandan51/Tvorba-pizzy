@@ -21,9 +21,10 @@ if (!isset($_SESSION['cart'])) {
 </head>
 <body>
 
+<h1>Make your own Pizza!</h1>
 <form action="cart_handler.php" method="post">
     <div class="row">
-        <label for="inputAction">Make your own pizza!</label>
+
         <input type="hidden" id="InputAction" name="action" value="add">
     </div>
 <!--    <div class="row">-->

@@ -7,11 +7,11 @@ if (!isset($_SESSION['cart'])) {
 }
 
 // Define prices for components (e.g., $10 base, $0.50 per unit of topping)
-const BASE_PRICE = 10.00;
+const BASE_PRICE = 6.00;
 const TOPPING_UNIT_PRICE = 0.50;
 
 // --- Function to calculate the item price based on toppings ---
-function calculatePizzaPrice($base, $toppings):float {
+function calculatePizzaPrice($toppings):float {
     // Start with the base price
     $total_price = BASE_PRICE;
 
@@ -34,7 +34,7 @@ function createPizzaCombinationId($_base, $_toppings): string
     }
     else
     {
-        throw new Exception("Not in range of toppings");
+//        throw new Exception("Not in range of toppings");
     }
 
     foreach ($_toppings as $_topping) {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'add') {
 
     // 1. Sanitize and extract general data
 //    $item_id = htmlspecialchars($_POST['item_id']); // e.g., '101' for pizza
-    $quantity = (int)$_POST['quantity'];
+    $quantity = htmlspecialchars((int)$_POST['quantity']);
 
     // Guard clause: Don't add if quantity is zero or less
     if ($quantity <= 0) {
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'add') {
     ];
 
     // 3. Calculate the unique price for this specific pizza configuration
-    $unit_price = calculatePizzaPrice($base, $toppings);
+    $unit_price = calculatePizzaPrice($toppings);
 
     // 4. Create a unique identifier for this specific pizza
     // This is CRITICAL because two pizzas with the same $item_id but different toppings
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'add') {
     // 5. Build the item array
     $new_item = [
         'id' => $item_id, // Base ID (e.g., '101' for pizza)
-        'name' => "{$base}",
+        'name' => "$base",
         'base' => $base,
         'toppings' => $toppings,
         'price' => $unit_price, // Unit price of ONE customized pizza
@@ -103,9 +103,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'add') {
 }
 
 // --- Logic for removing item from cart (GET request) ---
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'remove') {
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'remove') {
     // Use the unique_id (not just item_id) passed in the URL
-    $item_id = htmlspecialchars($_GET['unique_id']);
+    $item_id = htmlspecialchars($_POST['unique_id']);
 
     if (isset($_SESSION['cart'][$item_id])) {
         unset($_SESSION['cart'][$item_id]);
@@ -114,8 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'remove') {
     header('Location: view_cart.php');
     exit;
 }
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'clearCart') {
+    session_unset();
+}
 
 // Redirect back if accessed directly without action
 header('Location: index.php');
 exit;
-?>
